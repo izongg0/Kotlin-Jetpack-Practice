@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetpack_retrofit1.api.MyApi
 import com.example.jetpack_retrofit1.api.RetrofitInstance
+import com.example.jetpack_retrofit1.model.Post
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
@@ -20,6 +21,10 @@ class MainViewModel: ViewModel() {
     private var mutableWord2 = MutableLiveData<String>()
     val liveWord2 : LiveData<String>
         get() = mutableWord2
+
+    private val mutableWordList = MutableLiveData<List<Post>>()
+    val liveWordList : LiveData<List<Post>>
+    get() = mutableWordList
 
     fun getPost1() = viewModelScope.launch {  // retroit 에서 데이터를 받아옴
 
@@ -35,6 +40,10 @@ class MainViewModel: ViewModel() {
         Log.d("MainViewModel",post.toString())
         mutableWord2.value = post.title
 
+    }
+    fun getPostAll() = viewModelScope.launch {
+        val postAll = retrofitInstance.getPostAll()
 
+        mutableWordList.value = postAll
     }
 }
