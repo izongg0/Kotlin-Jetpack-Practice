@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.jetpack_2.Person" />
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/databindingEx"
+        android:textSize="50sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+   />
+    <TextView
+        android:id="@+id/databindingEx2"
+        android:textSize="50sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{user.name}"
+/>
+    <TextView
+        android:id="@+id/databindingEx3"
+        android:textSize="50sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{Integer.toString(user.age)}"
+        />
+    <TextView
+        android:id="@+id/databindingEx4"
+        android:textSize="50sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{user.age > 30 ? `나이 많음` : `나이 적음`}"
+        />
+    <Button
+        android:onClick="myClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="버튼"
+        android:id="@+id/btn"/>
+
+
+</LinearLayout>
+</layout>
