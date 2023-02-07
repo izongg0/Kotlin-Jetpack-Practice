@@ -20,7 +20,6 @@ class MainViewModel: ViewModel() {
     get()=_result
 
     fun getAllData() = viewModelScope.launch{
-
         _result.value = repository.getAllPlants()
     }
 
