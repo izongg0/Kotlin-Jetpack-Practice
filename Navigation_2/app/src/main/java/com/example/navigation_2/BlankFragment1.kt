@@ -23,11 +23,19 @@ class BlankFragment1 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        val bundle = Bundle()
+        bundle.putString("key","value") // 다른 Fragment로 데이터 전달
+
+
         val view = inflater.inflate(R.layout.fragment_blank1,container,false)
+
+        val action = BlankFragment1Directions.actionBlankFragment1ToBlankFragment2() // 안넣으면 디폴트값
         view.findViewById<Button>(R.id.btn1).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_blankFragment1_to_blankFragment2)
+//            Navigation.findNavController(view).navigate(R.id.action_blankFragment1_to_blankFragment2,bundle) //요기넣음
+            Navigation.findNavController(view).navigate(action)
         }
-        return inflater.inflate(R.layout.fragment_blank1, container, false)
+
+        return view
     }
 
 
